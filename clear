@@ -1,0 +1,60 @@
+[33mcommit 0de8bd2bd3ce8ddca2d354233efb1ea3fad50553[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Mohamed sahad M <mohamedsahadm786@gmail.com>
+Date:   Thu Aug 4 23:10:31 2022 +0530
+
+    hello file again updated(that is name added)
+
+[33mcommit 5fe77264e09f0fc31b513f054c260f2c3fcd28b2[m[33m ([m[1;32mfeature[m[33m)[m
+Author: Mohamed sahad M <mohamedsahadm786@gmail.com>
+Date:   Thu Aug 4 23:05:02 2022 +0530
+
+    hey file again updated(that is add my post office name)
+
+[33mcommit 9e9427f02919a59eccb64e2c98599bf9e0cf3415[m
+Author: Mohamed sahad M <mohamedsahadm786@gmail.com>
+Date:   Thu Aug 4 00:21:24 2022 +0530
+
+    hello file editted.(add second command in hello
+
+[33mcommit 510b1dde58f100058a7d4f6ac66a0e7fd548d799[m[33m ([m[1;35mrefs/stash[m[33m)[m
+Merge: 2da900c 05c5a16
+Author: Mohamed sahad M <mohamedsahadm786@gmail.com>
+Date:   Thu Aug 4 00:18:03 2022 +0530
+
+    WIP on master: 2da900c add second message
+
+[33mcommit 05c5a16ce299b116daed4f44918c15e3dd91ef2f[m
+Author: Mohamed sahad M <mohamedsahadm786@gmail.com>
+Date:   Thu Aug 4 00:18:03 2022 +0530
+
+    index on master: 2da900c add second message
+
+[33mcommit 2da900cfece8f83651ae130bfec7095e33a4334d[m
+Author: Mohamed sahad M <mohamedsahadm786@gmail.com>
+Date:   Wed Aug 3 23:26:11 2022 +0530
+
+    add second message
+
+[33mcommit c9718566d047c5738ade18780c1b9bdce19d1ce9[m
+Author: Mohamed sahad M <mohamedsahadm786@gmail.com>
+Date:   Wed Aug 3 22:45:39 2022 +0530
+
+    add first message
+
+[33mcommit 072a052f2406a347d9ee26b797ce395dab43cb5f[m
+Author: Mohamed sahad M <mohamedsahadm786@gmail.com>
+Date:   Wed Aug 3 22:30:43 2022 +0530
+
+    second file added
+
+[33mcommit 080b561df0cf6988a13ccc63b9b8b8e473b3310f[m
+Author: Mohamed sahad M <mohamedsahadm786@gmail.com>
+Date:   Tue Aug 2 21:34:00 2022 +0530
+
+    second step
+
+[33mcommit 929564ca786cb049e303c710fe601bc9b0c66507[m
+Author: Mohamed sahad M <mohamedsahadm786@gmail.com>
+Date:   Tue Aug 2 21:23:04 2022 +0530
+
+    initial step
