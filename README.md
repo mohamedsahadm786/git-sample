@@ -63,6 +63,7 @@ This project implements a **single-notebook pipeline** that simulates realistic 
 ### 2) Python Packages
 Create a virtual environment and install dependencies:
 
+```bash
 # Create and activate (choose one)
 python -m venv .venv
 # Windows:
