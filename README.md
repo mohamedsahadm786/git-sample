@@ -88,11 +88,10 @@ pip install -U \
  - `openai-whisper` requires FFmpeg on PATH.
  - `pyttsx3` uses OS TTS backends (Windows=SAPI5, macOS=NSSpeech, Linux=eSpeak).
  - `nara_wpe` provides dereverberation (WPE).
- - If using GPU, install torch/torchaudio per your CUDA version from the official site.
+ - If using GPU, install `torch/torchaudio` per your CUDA version from the official site.
 
 
 ### 3) External Tools
-
 - **FFmpeg** — required by Whisper/PyDub/Librosa
    - Windows: download FFmpeg and add `...\ffmpeg\bin` to PATH
    - macOS: `brew install ffmpeg`
@@ -102,3 +101,23 @@ pip install -U \
    - Linux: `sudo apt-get install -y portaudio19-dev`
 -  **Montréal Forced Aligner (MFA)** — for robust pause/phone timings
 Install MFA and acoustic model(s); ensure mfa is on PATH
+
+
+### 4) Environment Variables / PATH
+
+**macOS / Linux (bash/zsh):**
+# Recommended: headless plotting backend
+export MPLBACKEND="Agg"
+
+# OpenAI key (see section 5)
+export OPENAI_API_KEY="sk-..."
+
+# FFmpeg
+export PATH="/usr/local/bin:$PATH"           # if brew installed ffmpeg
+# or if you extracted ffmpeg to a custom dir, add its 'bin':
+export PATH="$HOME/tools/ffmpeg/bin:$PATH"
+
+# (Optional) MFA
+export MFA_ROOT_DIR="$HOME/.local/share/mfa"
+export PATH="$HOME/miniconda3/envs/mfa/bin:$PATH"   # adjust to your install
+
