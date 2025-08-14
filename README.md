@@ -84,4 +84,25 @@ pip install -U \
   torchaudio hyperpyyaml ipython
 ```
 
-sss
+###Notes
+
+ - openai-whisper requires FFmpeg on PATH.
+
+ - pyttsx3 uses OS TTS backends (Windows=SAPI5, macOS=NSSpeech, Linux=eSpeak).
+
+ - nara_wpe provides dereverberation (WPE).
+
+ - If using GPU, install torch/torchaudio per your CUDA version from the official site.
+ - 
+
+###3) External Tools
+
+- FFmpeg — required by Whisper/PyDub/Librosa
+- Windows: download FFmpeg and add ...\ffmpeg\bin to PATH
+- macOS: brew install ffmpeg
+- Linux (Debian/Ubuntu): sudo apt-get install -y ffmpeg
+- PortAudio — backend for sounddevice
+- macOS: brew install portaudio
+- Linux: sudo apt-get install -y portaudio19-dev
+-  Montréal Forced Aligner (MFA) — for robust pause/phone timings
+Install MFA and acoustic model(s); ensure mfa is on PATH
