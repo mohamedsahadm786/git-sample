@@ -164,7 +164,7 @@ client = OpenAI()  # reads OPENAI_API_KEY from env
 
 (The notebook originally uses `OpenAI(api_key="YOUR_GPT_API_KEY")`; you can replace that with the snippet above.)
 
-
+---
 ### ⬇️ Download the Code
 
 Clone this repo or download the ZIP:
@@ -190,7 +190,7 @@ Main file: A `udio_Interview.ipynb` (the end-to-end pipeline).
 8 - (Windows only) If you will use the notebook’s hard-coded MFA path, ensure the exe exists (or change the code to call mfa directly).
 9 - Run Jupyter or export the notebook to a script (see next section).
 
-
+---
 ### ▶️ How to Run
 **Option A — Run in Jupyter**
 ```bash
@@ -215,7 +215,7 @@ python Audio_Interview_converted.py
 ```
 Follow the same CLI prompts as in Jupyter.
 
-
+---
 ### ⚙️ Config You May Need to Edit
  - OpenAI client: Prefer client = OpenAI() (reads env var) instead of hardcoding.
  - Whisper model for LID: default is "small"; you can switch to "base"/"medium" per speed/accuracy needs.
@@ -231,7 +231,7 @@ C:/code_projects/RP2/pretrained_models/enhance
 This directory should include `hyperparams.yaml` and `enhance_model.ckpt`.
 Update preprocess_audio_pipeline(voice_file, model_dir="...") to your folder or temporarily disable enhancement by commenting out the enhancement step and using the cleaned intermediate file.
 
-
+---
 ### 📤 Outputs
  - Temp audio: response.wav, temp_cleaned.wav, voice_after_cleaning.wav, and per-question recordings (e.g., answer_2_try1.wav)
  - Session history: history.json — contains asked questions and your answers (and can be extended with metrics)
@@ -240,7 +240,7 @@ Reference model answer (optional)
 Structured comparison feedback (optional)
 Voice analytics (WPM, filler ratio, pause stats) (requires MFA for pauses)
 
-
+---
 ### ⏱ Optional: MFA Alignment
 
 To compute accurate pause counts/durations and word timings:
@@ -250,7 +250,7 @@ To compute accurate pause counts/durations and word timings:
 4 - The analyzer expects phone entries to compute pause durations (silences ≥ configurable threshold).
 **If MFA isn’t installed, choose “no” when prompted for voice analysis.**
 
-
+---
 ### 🧩 Troubleshooting
 
 **FFmpeg not found**
@@ -287,12 +287,12 @@ openai.AuthenticationError / No API key provided
 ```
 Set `OPENAI_API_KEY` env var and ensure `client = OpenAI()` is used.
 
-
+---
 ### 🔐 Security Note
 Do not hardcode API keys. Prefer environment variables or a `.env` file (excluded from version control).
 Remove temp WAV files and `history.json` after sessions if you do not want to keep local artifacts.
 
-
+---
 ### 📄 Sample requirements.txt
 ```bash
 openai-whisper
