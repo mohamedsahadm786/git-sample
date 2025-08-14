@@ -245,10 +245,10 @@ Voice analytics (WPM, filler ratio, pause stats) (requires MFA for pauses)
 
 To compute accurate pause counts/durations and word timings:
 
-1 - Install MFA and download an appropriate acoustic model & dictionary (e.g., English; for Dravidian languages choose a close model or adjust).
-2 - Ensure the MFA executable is callable (either on PATH or via the hard-coded path you set).
-3 - The pipeline writes transcripts and calls MFA to produce JSON alignment.
-4 - The analyzer expects phone entries to compute pause durations (silences ≥ configurable threshold).
+ 1 - Install MFA and download an appropriate acoustic model & dictionary (e.g., English; for Dravidian languages choose a close model or adjust).
+ 2 - Ensure the MFA executable is callable (either on PATH or via the hard-coded path you set).
+ 3 - The pipeline writes transcripts and calls MFA to produce JSON alignment.
+ 4 - The analyzer expects phone entries to compute pause durations (silences ≥ configurable threshold).
 **If MFA isn’t installed, choose “no” when prompted for voice analysis.**
 
 ---
