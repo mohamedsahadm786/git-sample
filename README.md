@@ -29,7 +29,7 @@ An end-to-end **audio interview training** tool that:
 - [Troubleshooting](#-troubleshooting)
 - [Security Note](#-security-note)
 - [Sample requirements.txt](#-sample-requirementstxt)
-- [License](#-license)
+
 
 ---
 
@@ -145,4 +145,173 @@ The notebook includes Windows-style PATH samples such as:
 `C:\code_projects\MFA\Library\bin`
 `C:\code_projects\ffmpeg_release_full\ffmpeg-7.1.1-full_build\bin`
 Update these for your machine or prefer adding `mfa/ffmpeg` to PATH globally.
+
+### 5) API Keys
+
+**OpenAI** — required for transcription, Q&A and feedback.
+
+**macOS / Linux:**
+`export OPENAI_API_KEY="sk-..."`
+
+**Windows (PowerShell):**
+setx OPENAI_API_KEY "sk-..."
+
+**In code, prefer:**
+```bash
+from openai import OpenAI
+client = OpenAI()  # reads OPENAI_API_KEY from env
+```
+
+(The notebook originally uses `OpenAI(api_key="YOUR_GPT_API_KEY")`; you can replace that with the snippet above.)
+
+
+### ⬇️ Download the Code
+
+Clone this repo or download the ZIP:
+
+```bash
+# Using git
+git clone https://github.com/<your-account>/<your-repo>.git
+cd <your-repo>
+
+# OR download ZIP from GitHub and extract it
+```
+Main file: A `udio_Interview.ipynb` (the end-to-end pipeline).
+
+
+## 🛠 Local Setup (Step-by-Step)
+1 - Install Python 3.9–3.11 and Git.
+2 - Clone the repository (or extract ZIP).
+3 - Create and activate a virtual environment (see Python Packages).
+4 - Install required Python packages.
+5 - Install FFmpeg and ensure ffmpeg is on PATH (ffmpeg -version should work).
+6 - (Optional) Install MFA and a suitable acoustic model.
+7 - Set OPENAI_API_KEY in your environment.
+8 - (Windows only) If you will use the notebook’s hard-coded MFA path, ensure the exe exists (or change the code to call mfa directly).
+9 - Run Jupyter or export the notebook to a script (see next section).
+
+
+### ▶️ How to Run
+**Option A — Run in Jupyter**
+```bash
+# From the repo folder
+jupyter lab     # or: jupyter notebook
+```
+Open `Audio_Interview.ipynb`, run cells top-to-bottom, then execute the final entry cell to start the interactive prompts.
+
+During a session you’ll be asked for:
+ - Job Title (required)
+ - Job Description (optional)
+ - Upload Résumé? (yes/no → provide PDF path; text parsed via PyMuPDF)
+ - Experience Level: Fresher / Fresher with Internship / Work Experience
+ - Interview Type: choose a predefined type (Behavioral/Technical/etc.) or enter a custom one
+ - Mode: live or recorded
+ - Language: ml, en, or kn
+
+**Option B — Export to Script and Run**
+```bash
+jupyter nbconvert --to script Audio_Interview.ipynb
+python Audio_Interview_converted.py
+```
+Follow the same CLI prompts as in Jupyter.
+
+
+### ⚙️ Config You May Need to Edit
+ - OpenAI client: Prefer client = OpenAI() (reads env var) instead of hardcoding.
+ - Whisper model for LID: default is "small"; you can switch to "base"/"medium" per speed/accuracy needs.
+ - MFA executable path (Windows example): the notebook invokes a path like C:\code_projects\MFA\Scripts\mfa.exe.
+ - If mfa is on PATH globally, change the code to call "mfa" instead of a hard-coded path.
+ - Acoustic model identifiers: code selects by language (e.g., "english_mfa" and "tamil_cv").
+ - Ensure those names match models installed in your MFA. Otherwise, update the identifiers in code.
+ - Deep speech enhancement model directory: default example is:
+
+```
+C:/code_projects/RP2/pretrained_models/enhance
+```
+This directory should include `hyperparams.yaml` and `enhance_model.ckpt`.
+Update preprocess_audio_pipeline(voice_file, model_dir="...") to your folder or temporarily disable enhancement by commenting out the enhancement step and using the cleaned intermediate file.
+
+
+### 📤 Outputs
+ - Temp audio: response.wav, temp_cleaned.wav, voice_after_cleaning.wav, and per-question recordings (e.g., answer_2_try1.wav)
+ - Session history: history.json — contains asked questions and your answers (and can be extended with metrics)
+ - Console/UI:
+Reference model answer (optional)
+Structured comparison feedback (optional)
+Voice analytics (WPM, filler ratio, pause stats) (requires MFA for pauses)
+
+
+### ⏱ Optional: MFA Alignment
+
+To compute accurate pause counts/durations and word timings:
+1 - Install MFA and download an appropriate acoustic model & dictionary (e.g., English; for Dravidian languages choose a close model or adjust).
+2 - Ensure the MFA executable is callable (either on PATH or via the hard-coded path you set).
+3 - The pipeline writes transcripts and calls MFA to produce JSON alignment.
+4 - The analyzer expects phone entries to compute pause durations (silences ≥ configurable threshold).
+**If MFA isn’t installed, choose “no” when prompted for voice analysis.**
+
+
+### 🧩 Troubleshooting
+
+**FFmpeg not found**
+```bash
+OSError: [Errno 2] No such file or directory: 'ffmpeg'
+```
+Install FFmpeg and ensure its bin is on PATH.
+
+**Microphone / PortAudio errors**
+```bash
+sounddevice.PortAudioError: Error opening InputStream
+```
+Check OS mic permissions and that an input device exists.
+Install PortAudio (brew install portaudio or sudo apt-get install portaudio19-dev).
+
+**TTS silent on Linux**
+```bash
+pyttsx3 did not speak
+```
+Install espeak / espeak-ng and try again.
+
+**CUDA/Torch mismatch**
+- Install the correct torch/torchaudio for your CUDA driver from https://pytorch.org.
+- For CPU-only, use the --index-url command shown in the install section.
+
+**MFA alignment fails / JSON missing**
+- Ensure `mfa` is on PATH or update the path the notebook uses.
+- Verify installed model names match what code references (e.g., `english_mfa`).
+- If unneeded, skip MFA by selecting “no” for voice analysis.
+
+**OpenAI authentication**
+```bash
+openai.AuthenticationError / No API key provided
+```
+Set `OPENAI_API_KEY` env var and ensure `client = OpenAI()` is used.
+
+
+### 🔐 Security Note
+Do not hardcode API keys. Prefer environment variables or a `.env` file (excluded from version control).
+Remove temp WAV files and `history.json` after sessions if you do not want to keep local artifacts.
+
+
+### 📄 Sample requirements.txt
+```bash
+openai-whisper
+openai>=1.30.0
+sounddevice
+numpy
+scipy
+pyttsx3
+librosa
+pydub
+PyMuPDF
+deep-translator
+soundfile
+noisereduce
+pyloudnorm
+nara-wpe
+torch
+torchaudio
+hyperpyyaml
+ipython
+```
 
