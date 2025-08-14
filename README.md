@@ -106,7 +106,7 @@ Install MFA and acoustic model(s); ensure mfa is on PATH
 ### 4) Environment Variables / PATH
 
 **macOS / Linux (bash/zsh):**
-```
+```bash
 # Recommended: headless plotting backend
 export MPLBACKEND="Agg"
 
