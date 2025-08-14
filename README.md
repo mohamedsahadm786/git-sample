@@ -84,7 +84,7 @@ pip install -U \
   torchaudio hyperpyyaml ipython
 ```
 
-###Notes
+### Notes
 
  - openai-whisper requires FFmpeg on PATH.
 
@@ -95,7 +95,7 @@ pip install -U \
  - If using GPU, install torch/torchaudio per your CUDA version from the official site.
  - 
 
-###3) External Tools
+### 3) External Tools
 
 - FFmpeg — required by Whisper/PyDub/Librosa
 - Windows: download FFmpeg and add ...\ffmpeg\bin to PATH
