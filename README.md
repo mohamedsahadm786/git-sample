@@ -63,7 +63,6 @@ This project implements a **single-notebook pipeline** that simulates realistic 
 ### 2) Python Packages
 Create a virtual environment and install dependencies:
 
-
 # Create and activate (choose one)
 python -m venv .venv
 # Windows:
@@ -82,5 +81,3 @@ pip install -U \
   openai-whisper openai sounddevice scipy numpy pyttsx3 librosa pydub \
   pymupdf deep-translator soundfile noisereduce pyloudnorm nara_wpe \
   torchaudio hyperpyyaml ipython
-
-
