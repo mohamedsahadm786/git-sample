@@ -82,6 +82,4 @@ pip install -U \
   openai-whisper openai sounddevice scipy numpy pyttsx3 librosa pydub \
   pymupdf deep-translator soundfile noisereduce pyloudnorm nara_wpe \
   torchaudio hyperpyyaml ipython
-'''bash
-
-rr
+'''
