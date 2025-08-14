@@ -84,25 +84,3 @@ pip install -U \
   torchaudio hyperpyyaml ipython
 
 
-```bash
-# Create and activate (choose one)
-python -m venv .venv
-# Windows:
-.venv\Scripts\activate
-# macOS/Linux:
-source .venv/bin/activate
-
-# Upgrade pip
-pip install -U pip
-
-# PyTorch/torchaudio (CPU baseline; see https://pytorch.org for CUDA builds)
-pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
-
-# Core packages
-pip install -U \
-  openai-whisper openai sounddevice scipy numpy pyttsx3 librosa pydub \
-  pymupdf deep-translator soundfile noisereduce pyloudnorm nara_wpe \
-  torchaudio hyperpyyaml ipython
-'''
-dff
----
