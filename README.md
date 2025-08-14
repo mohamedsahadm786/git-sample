@@ -106,6 +106,7 @@ Install MFA and acoustic model(s); ensure mfa is on PATH
 ### 4) Environment Variables / PATH
 
 **macOS / Linux (bash/zsh):**
+```
 # Recommended: headless plotting backend
 export MPLBACKEND="Agg"
 
@@ -120,4 +121,6 @@ export PATH="$HOME/tools/ffmpeg/bin:$PATH"
 # (Optional) MFA
 export MFA_ROOT_DIR="$HOME/.local/share/mfa"
 export PATH="$HOME/miniconda3/envs/mfa/bin:$PATH"   # adjust to your install
+```
+rr
 
