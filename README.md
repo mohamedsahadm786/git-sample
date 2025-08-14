@@ -181,13 +181,21 @@ Main file: A `udio_Interview.ipynb` (the end-to-end pipeline).
 
 ## 🛠 Local Setup (Step-by-Step)
 1 - Install Python 3.9–3.11 and Git.
+
 2 - Clone the repository (or extract ZIP).
+
 3 - Create and activate a virtual environment (see Python Packages).
+
 4 - Install required Python packages.
+
 5 - Install FFmpeg and ensure ffmpeg is on PATH (ffmpeg -version should work).
+
 6 - (Optional) Install MFA and a suitable acoustic model.
+
 7 - Set OPENAI_API_KEY in your environment.
+
 8 - (Windows only) If you will use the notebook’s hard-coded MFA path, ensure the exe exists (or change the code to call mfa directly).
+
 9 - Run Jupyter or export the notebook to a script (see next section).
 
 ---
@@ -242,6 +250,21 @@ Voice analytics (WPM, filler ratio, pause stats) (requires MFA for pauses)
 
 ---
 ### ⏱ Optional: MFA Alignment
+```bash
+# 1. Create and activate a Conda environment
+conda create -n mfa_env python=3.10 -y
+conda activate mfa_env
+
+# 2. Install MFA from conda-forge
+conda install -c conda-forge montreal-forced-aligner -y
+
+# 3. Verify installation
+mfa version
+
+# 4. Download example pre-trained models
+mfa model download acoustic english
+mfa model download dictionary english_us_arpa
+```
 
 To compute accurate pause counts/durations and word timings:
 
