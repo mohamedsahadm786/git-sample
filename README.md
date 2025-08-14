@@ -122,5 +122,27 @@ export PATH="$HOME/tools/ffmpeg/bin:$PATH"
 export MFA_ROOT_DIR="$HOME/.local/share/mfa"
 export PATH="$HOME/miniconda3/envs/mfa/bin:$PATH"   # adjust to your install
 ```
-rr
+
+**Windows (PowerShell):**
+```bash
+# Headless plotting backend
+setx MPLBACKEND "Agg"
+
+# OpenAI key (see section 5)
+setx OPENAI_API_KEY "sk-..."
+
+# FFmpeg (example path)
+setx PATH "C:\tools\ffmpeg\bin;%PATH%"
+
+# (Optional) MFA (examples; adjust to your install)
+setx MFA_ROOT_DIR "C:\Users\<you>\Documents\MFA"
+setx PATH "C:\code_projects\MFA\Library\bin;%PATH%"
+# If using a specific exe path in code, ensure it exists (see config section)
+
+```
+The notebook includes Windows-style PATH samples such as:
+
+`C:\code_projects\MFA\Library\bin`
+`C:\code_projects\ffmpeg_release_full\ffmpeg-7.1.1-full_build\bin`
+Update these for your machine or prefer adding `mfa/ffmpeg` to PATH globally.
 
